@@ -71,3 +71,5 @@ src/.opencode
 
 # TTS 服务本地缓存（部署产物，不入库）
 scripts/TTS服务/cache/
+.mimosa/
+**/.mimosa/
