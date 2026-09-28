@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "mimosa-hook-status/v1",
+  "recordedAt": "2026-09-28T17:13:05.871Z",
+  "sessionId": "sess_f370be34-6031-4b7e-85d9-9c03186ca340",
+  "event": "PostToolUse",
+  "toolName": "Edit",
+  "file": "D:\\z code\\.zcode\\workspace\\夜晚专用\\tsh520-blog\\package.json",
+  "outcome": "inconclusive",
+  "coverage": "partial",
+  "findingCount": 0,
+  "durationMs": 5,
+  "hostState": "hook_complete",
+  "reportHint": ".mimosa/reports/"
+}

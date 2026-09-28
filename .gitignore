@@ -1,0 +1,73 @@
+# build output
+dist/
+
+# generated types
+.astro/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# environment variables
+.env
+.env.production
+
+# macOS-specific files
+.DS_Store
+
+.vercel
+
+package-lock.json
+bun.lockb
+yarn.lock
+
+# ide
+.idea
+*.iml
+.claude
+
+# docs
+Firefly-docs/
+
+cache/
+package/
+.obsidian/
+
+# AI 摘要补全脚本（包含 API 密钥，不上传 GitHub）
+scripts/fill-descriptions/index.ts
+
+# AI 工具与临时文件
+.agent
+.agents
+.mimocode
+.pnpm-store
+note-organizer-workspace
+obsidian-sync-plugin
+src/临时收集
+src/.claudian
+src/.trash
+src/notes
+src/.copilot
+src/.opencode
+
+.env*
+
+# local tool state
+.wrangler/
+.pnpm-store/
+.zcode/
+.superpowers/
+
+# 本地维护的插件目录（AstrBot BlogWriter 等，独立 git 仓库，不随博客仓库提交）
+/plug-in/
+
+# 本地 AI 工具目录备份（从 src 移出，避免被构建器解析）
+.local-skill-backup/
+
+# TTS 服务本地缓存（部署产物，不入库）
+scripts/TTS服务/cache/

@@ -1,0 +1,125 @@
+/* ============================================
+   归档页类型 Tab（ArchivePanel.svelte 专用）
+   样式放在全局 CSS（经 main.css 导入）：
+   - 不受 Svelte scoped 优化影响，规则必然存在
+   - 视觉风格复刻网站导航页（/projects/）的分类筛选 UI：
+     实心滑动指示条 + 胶囊按钮 + 数量徽章
+   ============================================ */
+
+/* 胶囊容器：可换行，含滑动指示条 */
+.ap-tabs {
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.375rem;
+	padding: 0.375rem;
+	border-radius: 1rem;
+	border: 2px solid #000;
+	margin-bottom: 1.5rem;
+	min-width: 0;
+}
+:root.dark .ap-tabs {
+	border-color: #fff;
+}
+
+/* 滑动指示条：实心圆角，覆盖在激活按钮下方 */
+.ap-tab-indicator {
+	position: absolute;
+	border-radius: 9999px;
+	background: #000;
+	transition:
+		left 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+		top 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+		width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+		height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	opacity: 0;
+	pointer-events: none;
+	z-index: 0;
+}
+:root.dark .ap-tab-indicator {
+	background: #fff;
+}
+
+/* Tab 按钮：胶囊形，随内容宽度伸缩 */
+.ap-tab {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.375rem;
+	min-width: 0;
+	padding: 0.375rem 0.875rem;
+	border: none;
+	border-radius: 9999px;
+	font-size: 0.8125rem;
+	font-weight: 500;
+	white-space: nowrap;
+	cursor: pointer;
+	background: transparent;
+	transition:
+		color 0.2s,
+		opacity 0.2s;
+	font-family: inherit;
+	flex-shrink: 0;
+}
+
+.ap-tab[aria-selected="false"]:hover {
+	opacity: 0.7;
+}
+
+/* 未激活态 */
+.ap-tab[aria-selected="false"] {
+	color: #000;
+}
+:root.dark .ap-tab[aria-selected="false"] {
+	color: #fff;
+}
+
+/* 激活态：指示条覆盖时文字反白 */
+.ap-tab[aria-selected="true"] {
+	color: #fff;
+	cursor: default;
+}
+:root.dark .ap-tab[aria-selected="true"] {
+	color: #000;
+}
+
+/* 数量徽章 */
+.ap-tab-count {
+	flex-shrink: 0;
+	font-size: 0.65rem;
+	padding: 0.0625rem 0.375rem;
+	border-radius: 9999px;
+	background: oklch(0.92 0 0);
+	color: oklch(0.35 0 0);
+	line-height: 1.4;
+	font-variant-numeric: tabular-nums;
+}
+:root.dark .ap-tab-count {
+	background: oklch(0.25 0 0);
+	color: oklch(0.65 0 0);
+}
+
+/* 激活态徽章反转 */
+.ap-tab[aria-selected="true"] .ap-tab-count {
+	background: rgba(255, 255, 255, 0.25);
+	color: #fff;
+}
+:root.dark .ap-tab[aria-selected="true"] .ap-tab-count {
+	background: rgba(0, 0, 0, 0.2);
+	color: #000;
+}
+
+@media (max-width: 380px) {
+	.ap-tabs {
+		gap: 0.125rem;
+		padding: 0.25rem;
+	}
+	.ap-tab {
+		padding: 0.3125rem 0.625rem;
+	}
+	.ap-tab-count {
+		padding: 0.0625rem 0.25rem;
+	}
+}
